@@ -1,0 +1,9 @@
+/*
+ * O css/fale-conosco/fale-conosco.css do site legado só continha @import do
+ * cabeçalho, banner e rodapé — nenhuma regra própria. Como esses três agora
+ * são componentes, não sobrou nada para esta página.
+ */
+
+:host {
+  display: block;
+}

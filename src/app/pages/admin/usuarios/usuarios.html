@@ -1,0 +1,100 @@
+@if (podeCriar() || podeEditar()) {
+  <h3>{{ editandoId() === null ? 'Novo usuário' : 'Editar usuário' }}</h3>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" formControlName="name" placeholder="Nome completo" />
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" formControlName="email" placeholder="email@exemplo.com" />
+
+    @if (editandoId() === null) {
+      <label for="senha">Senha:</label>
+      <input
+        type="password"
+        id="senha"
+        formControlName="password"
+        autocomplete="new-password"
+        placeholder="Senha inicial"
+      />
+    }
+
+    <label for="perfil">Perfil:</label>
+    <select id="perfil" formControlName="profileId">
+      <option value="">Selecione…</option>
+      @for (perfil of perfis(); track perfil.id) {
+        <option [value]="perfil.id">{{ perfil.name }}</option>
+      }
+    </select>
+
+    @if (erros().length > 0) {
+      <ul class="mensagem-erro">
+        @for (erro of erros(); track erro) {
+          <li>{{ erro }}</li>
+        }
+      </ul>
+    }
+
+    @if (sucesso()) {
+      <p class="mensagem-sucesso">{{ sucesso() }}</p>
+    }
+
+    <button type="submit" class="btn-salvar" [disabled]="salvando()">
+      {{ salvando() ? 'Salvando…' : 'Salvar' }}
+    </button>
+
+    @if (editandoId() !== null) {
+      <button type="button" class="btn-secundario" (click)="cancelarEdicao()">Cancelar</button>
+    }
+  </form>
+
+  <hr />
+}
+
+<h3>Usuários</h3>
+
+<input type="text" placeholder="Buscar por nome" (input)="filtrar($event)" />
+
+@if (usuarios().length === 0) {
+  <p class="estado-vazio">Nenhum usuário encontrado.</p>
+} @else {
+  <ul>
+    @for (usuario of usuarios(); track usuario.id) {
+      <li>
+        <div class="acoes-item">
+          @if (podeEditar()) {
+            <button type="button" class="btn-editar" title="Editar" (click)="editar(usuario)">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+          }
+          @if (podeExcluir()) {
+            <button type="button" class="btn-excluir" title="Desativar" (click)="excluir(usuario)">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          }
+        </div>
+
+        <p class="doc-titulo">{{ usuario.name }}</p>
+        <p class="doc-detalhes">{{ usuario.email }}</p>
+        <p class="doc-detalhes">
+          Perfil: {{ usuario.profile.name }} · desde {{ formatarDataHora(usuario.createdOn) }}
+        </p>
+      </li>
+    }
+  </ul>
+
+  <div class="pagination-controls">
+    <button type="button" class="prev-btn" [disabled]="pagina() <= 1" (click)="irPara(pagina() - 1)">
+      Anterior
+    </button>
+    <span class="page-info">Página {{ pagina() }} de {{ totalPaginas() || 1 }}</span>
+    <button
+      type="button"
+      class="next-btn"
+      [disabled]="pagina() >= totalPaginas()"
+      (click)="irPara(pagina() + 1)"
+    >
+      Próximo
+    </button>
+  </div>
+}

@@ -1,0 +1,156 @@
+/*
+ * Origem: public_html/css/consultas/consultas.css.
+ *
+ * Os ids duplicados em todos os 20 cards (`#nome-consulta`, `#nome-doutor`,
+ * `#botao`) viraram classes — `.nome-consulta`, `.nome-doutor` e
+ * `.botao-marcar`. As declarações são as mesmas; muda só a forma de mirar.
+ *
+ * O prefixo `.section__cards` foi mantido porque é ele que dá especificidade
+ * suficiente para vencer as regras de .card e .container do Bootstrap, tal
+ * como no arquivo original.
+ */
+
+:host {
+  display: block;
+}
+
+/* Parte dos Cards */
+.section__cards .card {
+  width: 100%;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: center;
+  border: none;
+  border-radius: 15px;
+  filter: drop-shadow(0px 10px 10px rgb(230, 221, 221));
+}
+
+/* Background cinza atrás dos ícones */
+.section__cards .background-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Ícones */
+.section__cards .icone-background {
+  background-color: var(--cinza-secundario-textos);
+  opacity: 0.3;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* Background azul-bebê atrás do tipo de consulta e nome do profissional */
+.section__cards .background-azul {
+  width: 100%;
+  height: 100px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--azul-bebe-opaco);
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+/* Demais containers dentro dos cards */
+.section__cards .card .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -8px;
+}
+
+/* Cores dos ícones (check mark, calendário e o da consulta) */
+.section__cards .white {
+  color: white;
+}
+
+.section__cards .green {
+  color: rgb(52, 238, 52);
+}
+
+/* Fonte do tipo de consulta */
+.section__cards .nome-consulta {
+  padding-top: 20px;
+  font-size: x-large;
+  opacity: 0.8;
+}
+
+/* Leve modificação para a fonte do nome do profissional */
+.section__cards .nome-doutor {
+  margin-top: -20px;
+  margin-bottom: 20px;
+  font-size: small;
+  opacity: 0.8;
+}
+
+.section__cards .fonte-secundaria {
+  font-size: x-small;
+  opacity: 0.6;
+  padding-left: 5px;
+  font-weight: 600;
+}
+
+/* Aumenta a separação entre o calendário e as datas */
+.section__cards .datas {
+  padding-left: 9px;
+}
+
+/* Linha cinza que divide */
+.section__cards .divider {
+  width: 100%;
+  height: 1px;
+  border-width: 0;
+  color: var(--cinza-principal-textos);
+  background-color: var(--cinza-principal-textos);
+}
+
+/*
+ * Botão. O `background` original era `rgba(57,196,113,255)` — um alfa 255 que
+ * não existe em CSS (o valor válido vai de 0 a 1). Navegadores tratam o valor
+ * como fora da faixa e o limitam a 1, ou seja, cor sólida. Escrito aqui como
+ * rgb() para dizer a mesma coisa sem depender desse comportamento.
+ */
+.section__cards .botao-marcar {
+  margin-top: 50px;
+  font-size: small;
+  border-radius: 25px;
+  padding: 10px 20px;
+  color: #f1f1f1;
+  outline: none;
+  border: none;
+  background: rgb(57, 196, 113);
+  margin-bottom: 20px;
+}
+
+.section__cards .fa-whatsapp {
+  margin-right: 5px;
+}
+
+/* Centraliza o conteúdo da coluna */
+.section__cards .centralizar {
+  justify-content: center;
+  display: flex;
+}
+
+/* Deixa as colunas com menos espaço entre elas */
+.section__cards .row {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+/* Fonte para o texto abaixo dos cards */
+.section__cards .fonte-texto {
+  color: var(--cinza-principal-textos);
+  font-size: small;
+  opacity: 0.8;
+  margin-top: -1em;
+  margin-bottom: 2em;
+}

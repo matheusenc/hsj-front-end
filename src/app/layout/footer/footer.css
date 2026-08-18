@@ -1,0 +1,144 @@
+/*
+ * Origem: public_html/css/componentes/rodape.css.
+ *
+ * Mudanças deliberadas em relação ao original:
+ *  - `.section__footer` virou `:host` (o componente é o próprio <footer>);
+ *  - os ids `#div-rodape`, `#row-1`, `#row-2`, `#row-endereço`, `#endereço`,
+ *    `#telefone` e `#copyright` viraram classes;
+ *  - o menu do rodapé tinha <a> soltos dentro de <ul>, HTML inválido. Agora há
+ *    <li>, e por isso `.menu > a` virou `.menu > li > a`, com `display: inline`
+ *    e `list-style: none` nos <li> para manter os links na horizontal e sem
+ *    marcador — exatamente como renderizava antes;
+ *  - regras que miravam elementos inexistentes (`#icone-geo`, `.col-1`,
+ *    `.col-11`) foram descartadas: nenhuma delas tinha efeito visual.
+ */
+
+:host {
+  bottom: 0;
+  width: 100%;
+  display: block;
+}
+
+.container {
+  padding-left: 3.5%;
+}
+
+.div-rodape {
+  background: var(--azul-bebe-escuro);
+  padding-top: 2em;
+}
+
+.row-endereco {
+  flex-wrap: nowrap;
+}
+
+.col-lg-4 {
+  justify-content: center;
+  align-items: center;
+  display: grid;
+}
+
+.telefone {
+  font-size: small;
+  margin-top: -3px;
+  color: rgb(233, 233, 233);
+}
+
+.endereco {
+  font-size: small;
+  padding-top: 5px;
+  margin-left: 3.5px;
+  color: rgb(233, 233, 233);
+}
+
+.menu {
+  text-align: center;
+  padding: 0;
+  margin-bottom: 1em;
+  text-decoration: none;
+}
+
+.menu > li {
+  display: inline;
+  list-style: none;
+}
+
+.menu > li > a {
+  text-decoration: none;
+  font-size: smaller;
+  color: rgb(233, 233, 233);
+  padding-right: 0.5em;
+}
+
+.row-1 {
+  margin-bottom: 3em;
+}
+
+.row-2 {
+  justify-content: center;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.row {
+  margin-right: 0;
+}
+
+.copyright {
+  width: 80%;
+  text-align: center;
+  font-weight: 400;
+  font-size: 11px;
+  color: rgb(230, 228, 228);
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+}
+
+/*
+ * O original tinha `display: none` e o jQuery fazia fadeIn. Aqui o próprio
+ * @if do template controla a presença, então a regra de ocultar sairia sobrando.
+ */
+.back-to-top {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  color: white;
+  background: rgba(48, 48, 48, 0.7);
+  z-index: 1030;
+}
+
+/* Diminuindo a resolução para arrastar corretamente o espaçamento */
+@media (max-width: 1235px) {
+  .container {
+    width: 100%;
+  }
+}
+
+/* Some a lista do rodapé quando as colunas viram 12 (colunas-lg) */
+@media (max-width: 991px) {
+  .menu {
+    display: none;
+  }
+
+  .justify-content-start {
+    justify-content: center !important;
+  }
+}
+
+/* Resoluções extremamente pequenas */
+@media (max-width: 300px) {
+  .telefone {
+    margin-left: 0px;
+  }
+
+  .endereco {
+    margin-left: 1em;
+    text-align: center;
+  }
+}

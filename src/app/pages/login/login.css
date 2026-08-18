@@ -1,0 +1,101 @@
+/*
+ * Origem: public_html/css/login/login.css.
+ *
+ * A regra `body.login-page` não tem equivalente em CSS de componente, então o
+ * enquadramento da tela passou para `:host` — o componente é o único filho do
+ * app-root nesta rota, e o Bootstrap já zera a margem do body.
+ *
+ * A página legada era a única que NÃO carregava o Bootstrap. Aqui ele é
+ * global, e por isso o <h2> precisa das declarações de tamanho e margem que o
+ * navegador aplicaria sozinho: sem elas o Bootstrap deixaria o título maior
+ * que no site atual. O `#loginBtn` virou a classe `.botao-entrar`.
+ */
+
+:host {
+  min-height: 100vh;
+  background: var(--cinza-claro-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Formulário de login */
+.login-form {
+  max-width: 350px;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(84, 197, 208, 0.08);
+  padding: 32px 28px;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.login-form h2 {
+  color: var(--cinza-principal-textos);
+  /* Valores padrão do navegador, que o Bootstrap sobrescreveria. */
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 24px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.login-form input[type='email'],
+.login-form input[type='password'] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.login-form button.botao-entrar {
+  width: 100%;
+  padding: 10px 0;
+  background: var(--azul-bebe-escuro);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.login-form button.botao-entrar:hover:not(:disabled) {
+  background: var(--verde-limao);
+}
+
+.login-form button.botao-entrar:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* Blocos novos: o login legado só avisava de erro por alert() do navegador. */
+.aviso {
+  background: var(--azul-bebe-opaco);
+  color: var(--cinza-principal-textos);
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.erros {
+  list-style: none;
+  padding: 10px 12px;
+  margin: 0 0 4px 0;
+  background: var(--vermelho-rosado-opaco);
+  color: var(--vermelho-sangue);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .login-form {
+    padding: 18px 8px;
+  }
+}

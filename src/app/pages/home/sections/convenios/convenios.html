@@ -1,0 +1,25 @@
+<section class="section__convenios">
+  <div class="container-divisor">
+    <hr class="barraAzul" />
+  </div>
+
+  <div class="container-convenio">
+    <h1 class="titulo-convenio">Convênios</h1>
+    <div class="container-divisor"></div>
+  </div>
+
+  <div class="imagens-container-convenio container">
+    @for (convenio of convenios; track convenio.arquivo) {
+      <div class="imagem-moldura">
+        <img
+          class="imagem-convenio"
+          [src]="'/assets/convenios/' + convenio.arquivo"
+          loading="lazy"
+          [alt]="convenio.alt"
+        />
+      </div>
+    }
+  </div>
+
+  <div class="container-divisor"></div>
+</section>

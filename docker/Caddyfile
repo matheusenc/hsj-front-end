@@ -1,0 +1,22 @@
+# Servidor interno do container do site. Quem termina o TLS e responde pelos
+# domínios é o Caddy da stack de infraestrutura, que faz proxy para cá.
+:8080 {
+	root * /srv
+	encode gzip zstd
+
+	# As rotas client-side (/transparencia/:slug, /login, /admin/**) não têm
+	# arquivo em disco: caem no index.html e o Angular assume a navegação.
+	try_files {path} {path}/index.html /index.html
+	file_server
+
+	# Arquivos com hash no nome podem ser cacheados para sempre; o HTML não,
+	# senão o navegador continua apontando para o build anterior.
+	@comHash path_regexp \-[A-Z0-9]{8}\.(js|css)$
+	header @comHash Cache-Control "public, max-age=31536000, immutable"
+
+	@estaticos path_regexp \.(woff2?|ttf|png|jpe?g|webp|svg|ico)$
+	header @estaticos Cache-Control "public, max-age=2592000"
+
+	@html path *.html /
+	header @html Cache-Control "no-cache"
+}

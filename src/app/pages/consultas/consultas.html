@@ -1,0 +1,43 @@
+<section class="section__cards">
+  <div class="container">
+    <!--
+      O site legado dividia os 20 cards em sete .row de três colunas. Aqui é
+      uma .row só: com col-xl-4 o Bootstrap quebra de três em três do mesmo
+      jeito, e cada linha de quebra continua equalizando a altura dos cards.
+    -->
+    <div class="row">
+      @for (consulta of consultas; track $index) {
+        <div class="col-12 col-xl-4 centralizar">
+          <div class="card">
+            <div class="background-container">
+              <div class="icone-background">
+                <i [class]="consulta.icone"></i>
+              </div>
+            </div>
+            <div class="card-title background-azul">
+              <p class="nome-consulta fonte-primaria">{{ consulta.especialidade }}</p>
+              <p class="nome-doutor texto">{{ consulta.profissional }}</p>
+            </div>
+            <div class="container">
+              <i class="fa-sharp fa-solid fa-check fa-lg green"></i>
+              <span class="fonte-secundaria">Atende convênios</span>
+            </div>
+            @if (consulta.dias) {
+              <div class="container">
+                <i class="fa-regular fa-calendar-days green"></i>
+                <span class="fonte-secundaria datas">{{ consulta.dias }}</span>
+              </div>
+            }
+            <div class="container"><hr class="divider" /></div>
+            <div class="container">
+              <!-- Botão ainda sem destino, como no site legado. -->
+              <button type="button" class="btn btn-success texto botao-marcar">
+                <i class="fa-brands fa-whatsapp"></i>MARCAR CONSULTA
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

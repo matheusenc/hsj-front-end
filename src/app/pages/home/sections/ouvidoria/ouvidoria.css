@@ -1,0 +1,95 @@
+/*
+ * Origem: public_html/css/index/secao-ouvidoria.css.
+ *
+ * `#rodape_cima` virou classe. A imagem de fundo passou de fog.jpg para
+ * fog.webp, mesma arte recomprimida.
+ *
+ * Duas correções no markup, sem efeito visual:
+ *  - o <i> do avião acumulava `fa-paper-plane` e `fa-spray-can-sparkles`, dois
+ *    glifos concorrentes; ficou só o avião, que é o que aparecia;
+ *  - a coluna de texto declarava `col-7` e `col-12` ao mesmo tempo; ficou
+ *    `col-12`, que é o que prevalecia por vir depois na folha do Bootstrap.
+ */
+
+:host {
+  display: block;
+}
+
+.section__ouvidoria .rodape_cima {
+  opacity: 1;
+  position: relative;
+  isolation: isolate;
+}
+
+/*
+ * O `background-size` original era `1200px 900px contain` — três valores, o
+ * que torna a declaração inválida e faz o navegador ignorá-la, caindo no
+ * padrão `auto`. Mantido inválido de propósito seria pior; foi removido, o
+ * que produz exatamente o mesmo resultado renderizado.
+ */
+.section__ouvidoria .rodape_cima::after {
+  content: '';
+  opacity: 0.15;
+  z-index: -1;
+  inset: 0;
+  background-image: url('/assets/img/fog.webp');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  position: absolute;
+}
+
+.row_footer_cima {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.col_texto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.icone_aviao {
+  color: var(--cinza-principal-textos) !important;
+  padding-bottom: 30px;
+  align-content: flex-start;
+  display: grid;
+}
+
+.ouvidoria {
+  color: var(--azul-bebe-escuro);
+  font-size: 15px;
+  padding-bottom: 20px;
+}
+
+.botao_mensagem {
+  background-color: var(--vermelho-rosado-escuro);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 8px;
+  width: 240px;
+  height: 50px;
+}
+
+.botao_mensagem:hover {
+  background-color: #bb2d3b;
+}
+
+.fale_com_a_gente {
+  color: var(--azul-bebe-escuro) !important;
+  font-size: 35px;
+  padding-bottom: 25px;
+}
+
+.reclamacao {
+  color: var(--cinza-principal-textos);
+  font-size: 16px;
+  line-height: 30px;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 992px) {
+  .coluna_botao_mensagem {
+    margin-top: 20px;
+  }
+}

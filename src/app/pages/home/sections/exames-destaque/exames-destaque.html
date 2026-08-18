@@ -1,0 +1,41 @@
+<section class="section__exames">
+  <div class="exames">
+    <div class="container-divisor">
+      <hr class="barraAzul" />
+    </div>
+
+    <div class="container">
+      <div class="div-titulo">
+        <h1 class="titulo-exame">Exames</h1>
+      </div>
+      <div class="subtitulo-secao">
+        <p class="texto subtexto">
+          Aparelhos e procedimentos modernos com a tecnologia em favor da saúde.
+        </p>
+      </div>
+
+      <div class="row">
+        @for (exame of exames; track exame.titulo) {
+          <div class="col-12 col-lg-4">
+            <div class="exame-container">
+              <img class="imagem-exame" [src]="'/assets/img/' + exame.imagem" [alt]="exame.titulo" />
+              <div class="exame">
+                <h2 class="fonte-primaria">{{ exame.titulo }}</h2>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="subtitulo-secao">
+        <p class="texto texto-acima-do-botao">
+          Para mais informações sobre os exames e pagamentos online, clique no botão abaixo.
+        </p>
+      </div>
+
+      <div class="container-botao">
+        <a routerLink="/exames" class="botao-exame btn btn-danger">Ver todos exames</a>
+      </div>
+    </div>
+  </div>
+</section>

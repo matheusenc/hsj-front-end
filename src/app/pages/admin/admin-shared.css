@@ -1,0 +1,236 @@
+/*
+ * Estilos comuns do painel administrativo.
+ *
+ * Origem: public_html/css/admin/admin.css. Cada tela do painel inclui este
+ * arquivo no seu `styleUrls` junto do CSS próprio — assim as regras são
+ * compartilhadas sem virarem globais da aplicação.
+ *
+ * Mudanças em relação ao original:
+ *  - `button#salvarBtn` virou `.btn-salvar`;
+ *  - a família do ícone de download passou de "Font Awesome 5 Free" para a 6,
+ *    que é a versão realmente carregada. No site atual esse ícone não aparece;
+ *  - `--textos-cinza-secundario` (usado em .doc-detalhes, .doc-descricao e
+ *    .doc-link-externo) não existe em lugar nenhum: a variável correta chama-se
+ *    `--cinza-secundario-textos`. Como estava errada, a cor caía para o padrão
+ *    herdado. Corrigida aqui, o texto secundário passa a ficar cinza-claro como
+ *    o CSS pretendia.
+ */
+
+.admin-page {
+  max-width: 800px;
+  margin: 30px auto;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.admin-page h2,
+.admin-page h3,
+.admin-page h4 {
+  color: var(--cinza-principal-textos);
+  margin-top: 0;
+}
+
+.admin-page select,
+.admin-page textarea,
+.admin-page input[type='text'],
+.admin-page input[type='email'],
+.admin-page input[type='password'],
+.admin-page input[type='number'],
+.admin-page input[type='file'],
+.admin-page input[type='date'] {
+  padding: 8px;
+  width: 100%;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.admin-page .btn-salvar {
+  padding: 10px 15px;
+  background-color: var(--azul-bebe-escuro);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-page .btn-salvar:hover:not(:disabled) {
+  background-color: var(--verde-limao);
+}
+
+.admin-page .btn-salvar:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.admin-page .btn-secundario {
+  padding: 10px 15px;
+  background: none;
+  border: 1px solid var(--azul-bebe-escuro);
+  color: var(--azul-bebe-escuro);
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.admin-page ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-page li {
+  background: #e4e4e4;
+  border: 1px solid #e0e0e0;
+  border-left: 5px solid var(--azul-bebe-escuro);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 16px 24px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.admin-page .doc-titulo {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.admin-page .doc-detalhes {
+  font-size: 13px;
+  color: var(--cinza-secundario-textos);
+  margin: 4px 0;
+}
+
+.admin-page .doc-descricao {
+  font-size: 14px;
+  color: var(--cinza-secundario-textos);
+  margin: 8px 0;
+}
+
+.admin-page .doc-link-externo {
+  font-size: 14px;
+  color: var(--cinza-secundario-textos);
+  margin: 8px 0;
+}
+
+.admin-page .doc-link-externo a {
+  color: var(--azul-bebe-escuro);
+  text-decoration: none;
+}
+
+.admin-page .acoes-item {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.admin-page .btn-excluir,
+.admin-page .btn-editar {
+  background: none;
+  border: none;
+  color: var(--azul-bebe-escuro);
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.admin-page .btn-excluir:hover {
+  color: var(--vermelho-sangue);
+}
+
+.admin-page .btn-editar:hover {
+  color: var(--verde-limao);
+}
+
+.admin-page a.download-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background-color: var(--azul-bebe-escuro);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.admin-page a.download-btn:hover {
+  background-color: var(--verde-limao);
+}
+
+.admin-page a.download-btn::before {
+  content: '\f019'; /* unicode do ícone download */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  margin-right: 6px;
+}
+
+/* Controles de paginação */
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.pagination-controls .prev-btn,
+.pagination-controls .next-btn {
+  padding: 6px 12px;
+  background: none;
+  border: 1px solid var(--azul-bebe-escuro);
+  color: var(--azul-bebe-escuro);
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.pagination-controls .prev-btn:disabled,
+.pagination-controls .next-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.pagination-controls .prev-btn:not(:disabled):hover,
+.pagination-controls .next-btn:not(:disabled):hover {
+  background: var(--azul-bebe-escuro);
+  color: #fff;
+}
+
+.pagination-controls .page-info {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Mensagens de erro e sucesso — o admin legado usava alert() do navegador. */
+.mensagem-erro,
+.mensagem-sucesso {
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 14px;
+  margin: 10px 0;
+  list-style: none;
+}
+
+.mensagem-erro {
+  background: var(--vermelho-rosado-opaco);
+  color: var(--vermelho-sangue);
+}
+
+.mensagem-sucesso {
+  background: var(--azul-bebe-opaco);
+  color: var(--cinza-principal-textos);
+}
+
+.estado-vazio {
+  color: var(--cinza-secundario-textos);
+  font-size: 14px;
+  padding: 16px 0;
+}

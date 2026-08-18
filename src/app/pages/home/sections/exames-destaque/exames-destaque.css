@@ -1,0 +1,148 @@
+/*
+ * Origem: public_html/css/index/secao-exames.css.
+ *
+ * Todos os ids viraram classes — vários deles apareciam repetidos no markup:
+ * `#container-divisor`, `#subtitulo-seção` (duas ocorrências), `#exame` (uma
+ * por card). Os nomes com acento foram normalizados: `#subtitulo-seção` →
+ * `.subtitulo-secao`, `#container-botão` → `.container-botao`, `#botão-exame`
+ * → `.botao-exame`.
+ *
+ * Regras de `#subtitulo` e `#subtexto-exame` foram descartadas: não havia
+ * elemento algum com esses ids no HTML.
+ */
+
+:host {
+  display: block;
+}
+
+.section__exames {
+  background-color: var(--cinza-claro-background);
+}
+
+/* Container separador com barra azul dentro */
+.section__exames .container-divisor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3em;
+  margin-bottom: 1em;
+}
+
+/* Barra azul */
+.section__exames .barraAzul {
+  opacity: 0.95;
+  border-top: 0px;
+  background-color: var(--azul-bebe-escuro);
+  width: 50px;
+  height: 4px;
+}
+
+/* Título */
+.section__exames .titulo-exame {
+  font-size: 4em;
+  color: var(--azul-bebe-escuro);
+}
+
+/* Container da seção */
+.section__exames .container * {
+  opacity: 95%;
+}
+
+/* Colunas para a grid */
+.section__exames .col-12 {
+  justify-content: center;
+  display: flex;
+}
+
+.section__exames .container {
+  align-items: center;
+  display: grid;
+}
+
+/* Div do título */
+.section__exames .div-titulo {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 1em;
+}
+
+/* Subtítulo */
+.section__exames .subtitulo-secao {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 2em;
+}
+
+.section__exames .subtexto {
+  font-size: 12px;
+  color: var(--cinza-principal-textos);
+  margin-bottom: 4em;
+}
+
+.section__exames .texto-acima-do-botao {
+  font-size: 12px;
+  color: var(--cinza-principal-textos);
+}
+
+/* Container para a imagem e o texto do exame */
+.section__exames .exame-container {
+  border-radius: 5%;
+  background-color: #5dcbd598;
+  width: 95%;
+  height: 20em;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4em;
+  filter: drop-shadow(0 0 0.5rem rgba(80, 80, 80, 0.304));
+}
+
+/* Imagem dos exames */
+.section__exames .imagem-exame {
+  object-fit: cover;
+  border-radius: 5%;
+  height: 15em;
+  width: 100%;
+  opacity: 60%;
+}
+
+/* Faixa com o nome do exame */
+.section__exames .exame {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-top: 5px;
+}
+
+/* Container do botão */
+.section__exames .container-botao {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 3em;
+}
+
+/* Botão de exame */
+.section__exames .botao-exame {
+  font-size: small;
+  border-radius: 25px;
+  padding: 8px 20px 8px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  color: #ffffff;
+  opacity: 100%;
+  background: var(--vermelho-rosado-escuro);
+}
+
+.section__exames .botao-exame:hover {
+  background: #bb2d3b;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 992px) {
+  .section__exames .exame-container {
+    max-width: 70%;
+  }
+}

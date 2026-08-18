@@ -1,0 +1,152 @@
+@if (podeCriar() || podeEditar()) {
+  <h3>{{ editandoId() === null ? 'Cadastrar Documento' : 'Editar Documento' }}</h3>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <label for="categoria">Categoria:</label>
+    <select id="categoria" formControlName="categoryId">
+      @for (categoria of categorias(); track categoria.id) {
+        <option [value]="categoria.id">{{ categoria.name }}</option>
+      }
+    </select>
+
+    <label for="titulo">Título:</label>
+    <input type="text" id="titulo" formControlName="title" placeholder="Título" />
+
+    <label for="descricao">Descrição:</label>
+    <input type="text" id="descricao" formControlName="description" placeholder="Descrição" />
+
+    <label for="linkExterno">Link Externo:</label>
+    <input
+      type="text"
+      id="linkExterno"
+      formControlName="externalLink"
+      placeholder="Link Externo (opcional)"
+    />
+
+    <label for="arquivo">
+      Arquivo PDF:
+      @if (editandoId() !== null) {
+        <span class="dica">deixe em branco para manter o arquivo atual</span>
+      }
+    </label>
+    <input type="file" id="arquivo" accept="application/pdf" (change)="aoEscolherArquivo($event)" />
+
+    <label for="dataPublicacao">Data de Publicação:</label>
+    <input type="date" id="dataPublicacao" formControlName="publicationDate" />
+
+    <label for="dataPagamento">Data do Pagamento:</label>
+    <input type="date" id="dataPagamento" formControlName="paymentDate" />
+
+    @if (erros().length > 0) {
+      <ul class="mensagem-erro">
+        @for (erro of erros(); track erro) {
+          <li>{{ erro }}</li>
+        }
+      </ul>
+    }
+
+    @if (sucesso()) {
+      <p class="mensagem-sucesso">{{ sucesso() }}</p>
+    }
+
+    <button type="submit" class="btn-salvar" [disabled]="salvando()">
+      {{ salvando() ? 'Salvando…' : 'Salvar' }}
+    </button>
+
+    @if (editandoId() !== null) {
+      <button type="button" class="btn-secundario" (click)="cancelarEdicao()">Cancelar</button>
+    }
+  </form>
+
+  <hr />
+}
+
+<h3>Documentos Cadastrados</h3>
+
+<nav class="tab-header">
+  @for (categoria of categorias(); track categoria.id) {
+    <button
+      type="button"
+      class="tab-btn"
+      [class.active]="abaSlug() === categoria.slug"
+      (click)="trocarAba(categoria.slug)"
+    >
+      {{ categoria.name }}
+    </button>
+  }
+</nav>
+
+@if (carregando()) {
+  <p class="estado-vazio">Carregando…</p>
+} @else if (documentos().length === 0) {
+  <p class="estado-vazio">Nenhum documento nesta categoria.</p>
+} @else {
+  <ul>
+    @for (documento of documentos(); track documento.id) {
+      <li>
+        <div class="acoes-item">
+          @if (podeEditar()) {
+            <button
+              type="button"
+              class="btn-editar"
+              title="Editar"
+              (click)="editar(documento)"
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+          }
+          @if (podeExcluir()) {
+            <button
+              type="button"
+              class="btn-excluir"
+              title="Excluir"
+              (click)="excluir(documento)"
+            >
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          }
+        </div>
+
+        <p class="doc-titulo">{{ documento.title }}</p>
+        <p class="doc-detalhes">
+          Publicação: {{ formatarData(documento.publicationDate) }}
+          @if (documento.paymentDate) {
+            · Pagamento: {{ formatarData(documento.paymentDate) }}
+          }
+        </p>
+        <p class="doc-detalhes">
+          {{ documento.fileName }} · {{ formatarTamanho(documento.sizeInBytes) }}
+        </p>
+        <p class="doc-descricao">{{ documento.description }}</p>
+
+        @if (documento.externalLink) {
+          <p class="doc-link-externo">
+            Link Externo:
+            <a [href]="documento.externalLink" target="_blank" rel="noopener">{{
+              documento.externalLink
+            }}</a>
+          </p>
+        }
+
+        <a [href]="urlDownload(documento.downloadUrl)" target="_blank" class="download-btn"
+          >Download</a
+        >
+      </li>
+    }
+  </ul>
+
+  <div class="pagination-controls">
+    <button type="button" class="prev-btn" [disabled]="pagina() <= 1" (click)="irPara(pagina() - 1)">
+      Anterior
+    </button>
+    <span class="page-info">Página {{ pagina() }} de {{ totalPaginas() || 1 }}</span>
+    <button
+      type="button"
+      class="next-btn"
+      [disabled]="pagina() >= totalPaginas()"
+      (click)="irPara(pagina() + 1)"
+    >
+      Próximo
+    </button>
+  </div>
+}

@@ -1,0 +1,48 @@
+/*
+ * Página inédita — não há equivalente no site legado. Usa os mesmos tokens de
+ * marca para não destoar do resto: o rosa dos CTAs e o cinza dos textos.
+ */
+
+:host {
+  display: block;
+}
+
+.section__nao-encontrado {
+  padding: 4em 0;
+}
+
+.codigo {
+  font-size: 96px;
+  color: var(--azul-bebe-escuro);
+  margin-bottom: 0;
+}
+
+h2 {
+  color: var(--cinza-principal-textos);
+}
+
+p {
+  color: var(--cinza-secundario-textos);
+}
+
+.botao-inicio {
+  background-color: var(--vermelho-rosado-escuro);
+  border-color: var(--vermelho-rosado-escuro);
+  color: white;
+  border-radius: 25px;
+  padding: 0.6em 2em;
+  transition: all 0.3s ease;
+}
+
+.botao-inicio:hover {
+  background-color: var(--vermelho-sangue);
+  border-color: var(--vermelho-sangue);
+  color: white;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 767px) {
+  .codigo {
+    font-size: 72px;
+  }
+}

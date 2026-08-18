@@ -1,0 +1,122 @@
+/*
+ * Origem: public_html/css/index/secao-consultas.css, copiado na íntegra.
+ *
+ * O markup legado trazia `flex-{grow|shrink}-0` nos cards — placeholder de
+ * template nunca substituído, sem seletor correspondente. Foi removido.
+ *
+ * Atenção ao `.card { border-radius: 20px !important }` e ao `.border`: no
+ * site original eram regras globais da página; aqui ficam restritas a esta
+ * seção pelo encapsulamento, que é o comportamento desejado — as outras
+ * seções da home têm raio de borda próprio.
+ */
+
+:host {
+  display: block;
+}
+
+.section__consultas {
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+.texto-consultas {
+  color: var(--azul-bebe-escuro);
+  font-size: 80px;
+  line-height: 100px;
+}
+
+.texto-consultas2 {
+  padding-top: 20px;
+  color: var(--cinza-secundario-textos);
+  font-size: 15px;
+  line-height: 5px;
+}
+
+.texto-consultas3 {
+  color: var(--cinza-secundario-textos);
+  font-size: 15px;
+  line-height: 30px;
+}
+
+.texto-doenca {
+  padding-left: 10px;
+  color: var(--cinza-principal-textos);
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.dr-doenca {
+  padding-left: 10px;
+  color: var(--cinza-secundario-textos);
+}
+
+.border {
+  color: var(--cinza-secundario-textos);
+}
+
+.col-icone-doenca {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #dbdbdb !important;
+  height: 70px;
+  width: 70px;
+}
+
+.icone-doenca {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  color: #dbdbdb;
+  height: 90px;
+  width: 90px;
+}
+
+.row-doencas {
+  height: 300px;
+}
+
+.coluna-card {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.coluna-botao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nome-dr {
+  font-size: 12px;
+}
+
+.card {
+  border-radius: 20px !important;
+}
+
+.texto-botao-consulta {
+  padding-bottom: 20px;
+  color: var(--cinza-secundario-textos);
+  font-size: 15px;
+}
+
+.botao-consulta {
+  color: var(--cinza-claro-background);
+  background-color: var(--vermelho-rosado-escuro);
+  font-size: 15px;
+  padding-top: 7px;
+  width: 190px;
+  height: 40px;
+  text-align: center;
+  border-radius: 30px;
+}
+
+.botao-consulta:hover {
+  background-color: #bb2d3b;
+}
+
+.row-botao-consulta {
+  padding-top: 80px;
+}

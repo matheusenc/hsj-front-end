@@ -1,0 +1,126 @@
+<!-- BARRA SOCIAL DO TOPO DA PÁGINA -->
+<section class="section__topo-pagina">
+  <div class="container">
+    <div class="row">
+      <div class="col text-start">
+        <a
+          class="icone-loc"
+          href="https://www.google.com.br/maps/place/Nova+Era+-+MG,+35920-000/@-19.6952024,-43.1492406,11z/data=!3m1!4b1!4m5!3m4!1s0xa50e22f4c1939f:0xae877782d4638615!8m2!3d-19.7660386!4d-43.0358649"
+          target="_blank"
+          rel="noopener"
+          ><img class="icone-loc" src="/assets/icones-cabecalho/icone-loc.png" alt=""
+        /></a>
+        <a
+          class="texto-loc texto"
+          href="https://www.google.com.br/maps/place/Nova+Era+-+MG,+35920-000/@-19.6952024,-43.1492406,11z/data=!3m1!4b1!4m5!3m4!1s0xa50e22f4c1939f:0xae877782d4638615!8m2!3d-19.7660386!4d-43.0358649"
+          target="_blank"
+          rel="noopener"
+          style="text-decoration: none"
+        >
+          Nova Era - MG</a
+        >
+      </div>
+      <div class="col d-none d-xl-block d-lg-block text-center">
+        <a
+          href="https://www.facebook.com/hospitalsaojosenovaera"
+          target="_blank"
+          rel="noopener"
+          ><img class="icone-face" src="/assets/icones-cabecalho/icone-face.png" alt="Facebook"
+        /></a>
+        <a
+          href="https://www.instagram.com/hospitalsaojosenera/?hl=pt-br"
+          target="_blank"
+          rel="noopener"
+          ><img class="icone-insta" src="/assets/icones-cabecalho/icone-insta.png" alt="Instagram"
+        /></a>
+      </div>
+      <div class="col text-end">
+        <a href="tel:+553138611445"
+          ><img class="icone-tell" src="/assets/icones-cabecalho/icone-tell.png" alt=""
+        /></a>
+        <a class="texto-tell texto" href="tel:+553138611445" style="text-decoration: none"
+          >(31)3861-1445</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU DE NAVEGAÇÃO -->
+<nav class="container navbar navbar-light navbar-expand-lg" style="padding: 30px">
+  <a class="navbar-nav justify-content-between" style="width: 200px" routerLink="/">
+    <img
+      class="logo"
+      src="/assets/img/logo-hsj.png"
+      style="object-fit: cover"
+      alt="Logo do Hospital São José"
+    />
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Alternar navegação"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+    <div class="navbar-nav cabecalho__naveg">
+      <a
+        class="nav-item nav-link texto-cinza text-center fonte-secundaria"
+        routerLink="/consultas"
+        routerLinkActive="ativo"
+        >Consultas</a
+      >
+      <a
+        class="nav-item nav-link texto-cinza text-center fonte-secundaria"
+        routerLink="/exames"
+        routerLinkActive="ativo"
+        >Exames</a
+      >
+      <a
+        class="nav-item nav-link texto-cinza text-center fonte-secundaria"
+        routerLink="/fale-conosco"
+        routerLinkActive="ativo"
+        >Ouvidoria</a
+      >
+      <a
+        class="nav-item nav-link texto-cinza text-center fonte-secundaria"
+        routerLink="/sobre-nos"
+        routerLinkActive="ativo"
+        >Sobre Nós</a
+      >
+      <div class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle texto-cinza text-center fonte-secundaria"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Transparência
+        </a>
+        <ul class="dropdown-menu">
+          @for (categoria of categories(); track categoria.id) {
+            <li>
+              <a class="dropdown-item" [routerLink]="['/transparencia', categoria.slug]">{{
+                categoria.name
+              }}</a>
+            </li>
+          }
+          @if (categories().length > 0) {
+            <li><hr class="dropdown-divider" /></li>
+          }
+          <li>
+            <a class="dropdown-item" routerLink="/lgpd-politica-privacidade"
+              >LGPD e Política de Privacidade</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

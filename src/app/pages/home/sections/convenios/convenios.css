@@ -1,0 +1,74 @@
+/*
+ * Origem: public_html/css/index/secao-convenios.css, copiado na íntegra.
+ *
+ * `#container-divisor` aparecia três vezes na mesma seção e virou classe.
+ * A logo da Cemig foi renomeada de `cemig-logo(2).png` para `cemig-logo.png`
+ * — parênteses em nome de arquivo servido por URL só causam problema.
+ */
+
+:host {
+  display: block;
+}
+
+/* Container separador com barra azul dentro */
+.section__convenios .container-divisor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3em;
+  margin-bottom: 1em;
+}
+
+/* Barra azul */
+.section__convenios .barraAzul {
+  opacity: 0.95;
+  border-top: 0px;
+  background-color: var(--azul-bebe-escuro);
+  width: 50px;
+  height: 4px;
+}
+
+/* Div com o título dentro */
+.section__convenios .container-convenio {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+}
+
+/* Título */
+.section__convenios .container-convenio .titulo-convenio {
+  font-size: 4em;
+  color: var(--azul-bebe-escuro);
+}
+
+/* Container para a moldura dos ícones de convênio */
+.imagens-container-convenio {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  justify-self: center;
+  justify-content: space-between;
+  /* Alinha a borda das imagens laterais com a das outras seções */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Moldura dos ícones de convênio */
+.imagens-container-convenio .imagem-moldura {
+  height: 125px;
+  width: 125px;
+  display: flex;
+  object-fit: cover;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+/* Imagem dos ícones de convênio */
+.imagem-convenio {
+  justify-self: center;
+  filter: drop-shadow(4px 8px 10px rgb(224, 221, 221));
+  border-radius: 100%;
+  height: 80%;
+  width: 80%;
+}

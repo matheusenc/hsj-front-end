@@ -1,0 +1,279 @@
+/*
+ * Origem: public_html/css/index/secao-sobre-nos.css, copiado na íntegra.
+ *
+ * `#svg__shape-divider-bottom` virou classe. O `.line` mantém `display: none`
+ * como valor inicial — quem o exibe é o binding do template, no lugar do
+ * `line.style.display = 'block'` que o animacoes.js executava.
+ */
+
+:host {
+  display: block;
+}
+
+/* LINHA INFERIOR AO TÍTULO DA SEÇÃO SOBRE NÓS */
+.titulo::after {
+  content: '';
+  width: 50px;
+  height: 4px;
+  background: var(--cinza-principal-textos);
+  display: block;
+  margin: 25px auto;
+}
+
+/* TIMELINE */
+.timeline {
+  font-family: 'Roboto';
+  list-style: none;
+  padding: 20px 0 20px;
+  position: relative;
+}
+
+.line {
+  position: absolute;
+  z-index: 2;
+  left: calc(50% - 1px);
+  width: 2px;
+  top: calc(4%);
+  background-color: var(--vermelho-rosado-escuro);
+  display: none;
+}
+
+.show-me {
+  background-color: var(--vermelho-rosado-escuro) !important;
+}
+
+.timeline:before {
+  top: 20px;
+  bottom: 16%;
+  position: absolute;
+  content: ' ';
+  width: 3px;
+  background-color: var(--vermelho-rosado-escuro);
+  opacity: 0.1;
+  left: 50%;
+  margin-left: -1.5px;
+}
+
+.timeline > li {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+  content: ' ';
+  display: table;
+}
+
+.timeline > li:after {
+  clear: both;
+}
+
+.timeline > li > .timeline-panel {
+  width: 43%;
+  float: left;
+  background-color: var(--azul-bebe-opaco);
+  padding: 20px 20px 35px 20px;
+  position: relative;
+}
+
+.timeline > li > .timeline-panel:before {
+  position: absolute;
+  top: 0;
+  right: -15px;
+  display: inline-block;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  content: ' ';
+}
+
+.timeline > li > .timeline-panel:after {
+  position: absolute;
+  top: 1px;
+  right: -14px;
+  display: inline-block;
+  border-top: 14px solid transparent;
+  border-left: 14px solid var(--azul-bebe-opaco);
+  border-right: 0 solid var(--azul-bebe-opaco);
+  border-bottom: 14px solid transparent;
+  content: ' ';
+}
+
+.timeline > li > .timeline-badge {
+  color: #fff;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 1.4em;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -34px;
+  background-color: var(--vermelho-rosado-opaco);
+  z-index: 100;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+.timeline > li > .timeline-badge i {
+  padding-top: 25px;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel {
+  float: right;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:before {
+  border-left-width: 0;
+  border-right-width: 15px;
+  left: -15px;
+  right: auto;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:after {
+  border-left-width: 0;
+  border-right-width: 14px;
+  left: -14px;
+  right: auto;
+}
+
+.timeline-title {
+  margin-top: 0;
+  color: var(--cinza-principal-textos);
+  font-weight: 600;
+  font-size: 1.15rem;
+  padding: 10px 0;
+}
+
+.timeline-body > p,
+.timeline-body > ul {
+  margin-bottom: 0;
+  color: var(--cinza-secundario-textos);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.timeline-body > p + p {
+  margin-top: 5px;
+}
+
+/* SHAPE DIVIDER (FORMATO DE NUVENS) */
+.svg__shape-divider-bottom {
+  overflow: hidden;
+  position: relative;
+  line-height: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+}
+
+.svg__shape-divider-bottom svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.svg__shape-divider-bottom .divider-fill {
+  fill: var(--cinza-claro-background);
+  transform-origin: center;
+  transform: rotateY(0deg);
+}
+
+/* CARDS DE ESTATÍSTICAS */
+.estatisticas__sobre-nos {
+  background-color: var(--cinza-claro-background);
+}
+
+.card-estatistica {
+  border-radius: 20px;
+}
+
+.card-estatistica .numero-estatistica {
+  font-family: 'Roboto';
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: var(--azul-bebe-escuro);
+}
+
+.card-estatistica .card-title {
+  font-family: 'Roboto Slab';
+  font-size: 1.1rem;
+  color: var(--cinza-principal-textos);
+  font-weight: 600;
+}
+
+.card-estatistica .card-body {
+  font-size: 1rem;
+  color: var(--cinza-secundario-textos);
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 767px) {
+  ul.timeline:before {
+    left: 34.5px;
+  }
+
+  ul.timeline > li > .timeline-panel {
+    width: calc(100% - 90px);
+  }
+
+  ul.timeline > li > .timeline-badge {
+    left: 0;
+    margin-left: 0;
+    top: 0;
+  }
+
+  ul.timeline > li > .timeline-panel {
+    float: right;
+  }
+
+  ul.timeline > li > .timeline-panel:before {
+    border-left-width: 0;
+    border-right-width: 15px;
+    left: -15px;
+    right: auto;
+  }
+
+  ul.timeline > li > .timeline-panel:after {
+    border-left-width: 0;
+    border-right-width: 14px;
+    left: -14px;
+    right: auto;
+  }
+
+  .line {
+    left: 33.5px;
+  }
+
+  .titulo::after {
+    margin: 25px 2px;
+  }
+}
+
+/* BOTÃO SAIBA MAIS */
+.botao-saiba-mais {
+  background-color: var(--vermelho-rosado-escuro);
+  border-color: var(--vermelho-rosado-escuro);
+  color: var(--cinza-claro-background);
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.botao-saiba-mais:hover {
+  background-color: var(--vermelho-sangue);
+  border-color: var(--vermelho-sangue);
+  transform: translateY(-2px);
+  color: var(--cinza-claro-background);
+}

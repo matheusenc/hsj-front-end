@@ -1,0 +1,92 @@
+<div class="div-rodape">
+  <div class="container">
+    <div class="row row-1">
+      <div class="col-lg-4 justify-content-center">
+        <div class="row row-endereco">
+          <div class="col-12">
+            <a
+              target="_blank"
+              rel="noopener"
+              href="https://www.google.com/maps/place/Hospital+S%C3%A3o+Jos%C3%A9/@-19.7676734,-43.033557,17z/data=!4m13!1m7!3m6!1s0xa50e32fcafffff:0x6fee774876cd80aa!2sR.+Osc%C3%A1r+de+Ara%C3%BAjo,+197+-+Centen%C3%A1rio,+Nova+Era+-+MG,+35920-000!3b1!8m2!3d-19.7676734!4d-43.0313683!3m4!1s0xa50e3302919a71:0x4858394a06407f82!8m2!3d-19.7676734!4d-43.0313683"
+              class="fa-solid fa-location-dot text-white fa-xs"
+              style="text-decoration: none"
+              aria-label="Endereço no Google Maps"
+            ></a>
+            <a
+              href="https://www.google.com/maps/place/Hospital+S%C3%A3o+Jos%C3%A9/@-19.7676734,-43.033557,17z/data=!4m13!1m7!3m6!1s0xa50e32fcafffff:0x6fee774876cd80aa!2sR.+Osc%C3%A1r+de+Ara%C3%BAjo,+197+-+Centen%C3%A1rio,+Nova+Era+-+MG,+35920-000!3b1!8m2!3d-19.7676734!4d-43.0313683!3m4!1s0xa50e3302919a71:0x4858394a06407f82!8m2!3d-19.7676734!4d-43.0313683"
+              class="link texto endereco"
+              target="_blank"
+              rel="noopener"
+            >
+              Rua Oscar de Araújo, 197 - Nova Era, MG</a
+            >
+          </div>
+        </div>
+        <div class="row row-telefone mt-3 mt-lg-0">
+          <div class="col-12">
+            <a
+              href="tel:+553138611445"
+              style="text-decoration: none"
+              class="fa-solid fa-phone text-white fa-xs"
+              aria-label="Telefone"
+            ></a>
+            <a href="tel:+553138611445" class="link texto telefone"> Tel: (31) 3861-1445</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <nav class="navegacao">
+          <ul class="menu">
+            <li><a routerLink="/consultas" class="link texto nav-item">Consultas</a></li>
+            <li><a routerLink="/exames" class="link texto nav-item">Exames</a></li>
+            <li><a routerLink="/fale-conosco" class="link texto nav-item">Ouvidoria</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-lg-4 justify-content-center mt-5 mt-lg-0">
+        <div class="row">
+          <div class="col-6">
+            <a
+              target="_blank"
+              rel="noopener"
+              href="https://www.facebook.com/hospitalsaojosenovaera"
+              style="text-decoration: none"
+              class="fa-brands fa-facebook text-white fa-2xl"
+              aria-label="Facebook"
+            ></a>
+          </div>
+          <div class="col-6">
+            <a
+              target="_blank"
+              rel="noopener"
+              href="https://www.instagram.com/hospitalsaojosenera/?hl=pt-br"
+              style="text-decoration: none"
+              class="fa-brands fa-instagram text-white fa-2xl"
+              aria-label="Instagram"
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row row-2">
+      <div class="col-12 text-center">
+        <span class="copyright"
+          >Copyright © 2022 | Desenvolvido pela <strong> Visão Jr. </strong> e mantido pela
+          <strong>Equipe de TI</strong> do Hospital São José</span
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTÃO SCROLL TO TOP -->
+@if (showBackToTop()) {
+  <a
+    href="#"
+    class="btn p-2 rounded-1 back-to-top"
+    role="button"
+    aria-label="Voltar ao topo"
+    (click)="backToTop($event)"
+    ><i class="fas fa-chevron-up fa-lg"></i
+  ></a>
+}

@@ -1,0 +1,38 @@
+/*
+ * Origem: public_html/css/lgpd/lgpd.css.
+ *
+ * Mesmas duas observações da página Sobre Nós:
+ *  - o @import de secao-cards.css era inócuo aqui (nenhum elemento com as
+ *    classes `card`, `card-title` ou `list-group`);
+ *  - o `color: !important` foi restringido ao conteúdo da página, para não
+ *    pintar de cinza os links do rodapé como acontece no site atual.
+ *
+ * O `!important` continua alcançando `div`, então o texto dos alertas
+ * `alert-info` e `alert-warning` fica cinza em vez da cor do Bootstrap —
+ * exatamente como hoje.
+ */
+
+:host {
+  display: block;
+}
+
+:host .texto,
+:host .fonte-primaria,
+:host h1,
+:host h2,
+:host h3,
+:host h4,
+:host h5,
+:host h6,
+:host p,
+:host li,
+:host label,
+:host span,
+:host div,
+:host a {
+  color: var(--cinza-principal-textos) !important;
+}
+
+.card-informacao {
+  border-radius: 10px;
+}

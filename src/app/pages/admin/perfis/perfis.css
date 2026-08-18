@@ -1,0 +1,71 @@
+/* Complementa ../admin-shared.css com a lista de permissões em checkbox. */
+
+:host {
+  display: block;
+}
+
+.papeis {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 10px 0;
+}
+
+.papeis legend {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cinza-principal-textos);
+  padding: 0 6px;
+  width: auto;
+}
+
+.papel-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.papel-item input {
+  margin-top: 3px;
+}
+
+.papel-item span {
+  display: flex;
+  flex-direction: column;
+}
+
+.chave {
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--azul-bebe-escuro);
+}
+
+.chaves {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.descricao-papel {
+  font-size: 12px;
+  color: var(--cinza-secundario-textos);
+}
+
+.dica {
+  font-size: 12px;
+  color: var(--cinza-secundario-textos);
+  margin: 0 0 8px 0;
+}
+
+.etiqueta-sistema {
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  background: var(--azul-bebe-opaco);
+  color: var(--cinza-secundario-textos);
+  border-radius: 3px;
+  padding: 2px 6px;
+  margin-left: 6px;
+}

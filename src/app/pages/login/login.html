@@ -1,0 +1,26 @@
+<form class="login-form" [formGroup]="form" (ngSubmit)="entrar()">
+  <h2>Login</h2>
+
+  @if (aviso()) {
+    <p class="aviso">{{ aviso() }}</p>
+  }
+
+  @if (erros().length > 0) {
+    <ul class="erros">
+      @for (erro of erros(); track erro) {
+        <li>{{ erro }}</li>
+      }
+    </ul>
+  }
+
+  <input type="email" formControlName="email" placeholder="Email" autocomplete="username" /><br />
+  <input
+    type="password"
+    formControlName="password"
+    placeholder="Senha"
+    autocomplete="current-password"
+  /><br />
+  <button type="submit" class="botao-entrar" [disabled]="enviando()">
+    {{ enviando() ? 'Entrando…' : 'Entrar' }}
+  </button>
+</form>

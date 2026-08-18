@@ -1,0 +1,14 @@
+node_modules
+dist
+.angular
+.git
+.github
+.vscode
+.idea
+
+# Nunca entram na imagem
+.env
+.env.local
+
+# Não afetam o build
+*.md

@@ -1,0 +1,64 @@
+<h2 class="text-center mt-4 titulo-lista">{{ titulo() }}</h2>
+
+@if (state().carregando) {
+  <p class="text-center estado-lista texto">Carregando documentos…</p>
+} @else if (state().erro) {
+  <p class="text-center estado-lista texto">
+    Não foi possível carregar os documentos agora. Tente novamente em instantes.
+  </p>
+} @else if (state().dados; as dados) {
+  @if (dados.documents.length === 0) {
+    <p class="text-center estado-lista texto">Nenhum documento publicado nesta categoria.</p>
+  } @else {
+    <ul class="lista">
+      @for (documento of dados.documents; track documento.id) {
+        <li>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ documento.title }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                Data de Publicação {{ formatarData(documento.publicationDate) }}
+              </h6>
+              @if (documento.paymentDate) {
+                <h6 class="card-subtitle mb-2 text-muted">
+                  Data do Pagamento: {{ formatarData(documento.paymentDate) }}
+                </h6>
+              }
+              <p class="card-text">{{ documento.description }}</p>
+              @if (documento.externalLink) {
+                <h6 class="card-subtitle mb-2 text-muted">
+                  Link Externo:
+                  <a [href]="documento.externalLink" target="_blank" rel="noopener">{{
+                    documento.externalLink
+                  }}</a>
+                </h6>
+              }
+              <!--
+                Âncora comum em vez de fetch: o endpoint de download é público
+                e o Content-Disposition não está exposto por CORS, então só
+                assim o navegador usa o nome original do arquivo.
+              -->
+              <a [href]="urlDownload(documento.downloadUrl)" target="_blank" class="card-link"
+                >Download</a
+              >
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+
+  <div class="pagination-controls">
+    <button type="button" [disabled]="dados.page <= 1" (click)="irPara(dados.page - 1)">
+      Anterior
+    </button>
+    <span class="page-info">Página {{ dados.page }} de {{ dados.totalPages || 1 }}</span>
+    <button
+      type="button"
+      [disabled]="dados.page >= dados.totalPages"
+      (click)="irPara(dados.page + 1)"
+    >
+      Próximo
+    </button>
+  </div>
+}

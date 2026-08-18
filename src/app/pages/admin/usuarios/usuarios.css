@@ -1,0 +1,5 @@
+/* Todo o visual vem de ../admin-shared.css. */
+
+:host {
+  display: block;
+}

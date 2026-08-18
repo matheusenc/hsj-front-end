@@ -1,0 +1,85 @@
+@if (podeCriar() || podeEditar()) {
+  <h3>{{ editandoId() === null ? 'Novo papel' : 'Editar papel' }}</h3>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <label for="chave">
+      Chave:
+      <span class="dica">formato recurso:acao — não pode ser alterada depois</span>
+    </label>
+    <input type="text" id="chave" formControlName="key" placeholder="documents:create" />
+
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" formControlName="name" placeholder="Publicar documentos" />
+
+    <label for="descricao">Descrição:</label>
+    <input
+      type="text"
+      id="descricao"
+      formControlName="description"
+      placeholder="Enviar novos documentos de transparência."
+    />
+
+    @if (erros().length > 0) {
+      <ul class="mensagem-erro">
+        @for (erro of erros(); track erro) {
+          <li>{{ erro }}</li>
+        }
+      </ul>
+    }
+
+    @if (sucesso()) {
+      <p class="mensagem-sucesso">{{ sucesso() }}</p>
+    }
+
+    <button type="submit" class="btn-salvar" [disabled]="salvando()">
+      {{ salvando() ? 'Salvando…' : 'Salvar' }}
+    </button>
+
+    @if (editandoId() !== null) {
+      <button type="button" class="btn-secundario" (click)="cancelarEdicao()">Cancelar</button>
+    }
+  </form>
+
+  <hr />
+}
+
+<h3>Papéis</h3>
+
+@if (papeis().length === 0) {
+  <p class="estado-vazio">Nenhum papel cadastrado.</p>
+} @else {
+  <ul>
+    @for (papel of papeis(); track papel.id) {
+      <li>
+        <div class="acoes-item">
+          @if (podeEditar() && !papel.isSystem) {
+            <button type="button" class="btn-editar" title="Editar" (click)="editar(papel)">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+          }
+          @if (podeExcluir() && !papel.isSystem) {
+            <button type="button" class="btn-excluir" title="Excluir" (click)="excluir(papel)">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          }
+        </div>
+
+        <p class="doc-titulo">
+          {{ papel.name }}
+          @if (papel.isSystem) {
+            <span class="etiqueta-sistema">sistema</span>
+          }
+        </p>
+        <p class="doc-detalhes chave">{{ papel.key }}</p>
+        <p class="doc-descricao">{{ papel.description }}</p>
+        @if (papel.profiles.length > 0) {
+          <p class="doc-detalhes">
+            Usado por: @for (perfil of papel.profiles; track perfil.id) {
+              <span class="perfil-marca">{{ perfil.name }}</span>
+            }
+          </p>
+        }
+      </li>
+    }
+  </ul>
+}

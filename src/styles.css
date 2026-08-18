@@ -1,3 +1,80 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+ * Estilos globais do site do Hospital São José.
+ *
+ * Contém apenas o que é legitimamente global: as fontes, os tokens de cor da
+ * marca e as classes utilitárias de tipografia. Tudo que é específico de uma
+ * seção mora no CSS do componente correspondente.
+ *
+ * Origem: public_html/css/componentes/cores-e-fontes.css — os valores foram
+ * copiados literalmente do site legado para preservar a identidade visual.
+ * Os três @import de fontes do Google que existiam lá foram descartados:
+ * Merriweather nunca é usado e as variantes itálicas de Roboto não são
+ * aplicadas em lugar nenhum. As fontes reais são os TTF locais abaixo.
+ */
 
 @import 'tailwindcss';
+
+/* CORES GLOBAIS */
+
+:root {
+  --vermelho-rosado-escuro: #d05372;
+  --vermelho-rosado-opaco: #f9e8e7;
+  --vermelho-sangue: #c4170c;
+  --azul-bebe-escuro: #54c5d0;
+  --azul-bebe-opaco: #e2f2f3;
+  --cinza-principal-textos: #54595f;
+  --cinza-secundario-textos: #7a7a7a;
+  --cinza-claro-background: #f4f4fc;
+  --verde-limao: #38c370;
+  --azul-claro-background-cards-exames: #b7e7eb;
+}
+
+/* FONTES GLOBAIS */
+
+/*
+ * Só existe o arquivo Regular de cada família. O peso 600 de .fonte-primaria e
+ * o 500 de .acentuacao são sintetizados pelo navegador — era assim no site
+ * legado, e trocar por uma fonte variável mudaria a aparência do texto.
+ */
+@font-face {
+  font-family: 'Roboto';
+  src: url('/assets/fonts/Roboto/Roboto-Regular.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url('/assets/fonts/Roboto-Slab/RobotoSlab-Regular.ttf');
+  font-display: swap;
+}
+
+.fonte-primaria {
+  font-family: 'Roboto';
+  font-weight: 600;
+}
+
+.fonte-secundaria {
+  font-family: 'Roboto Slab';
+  font-weight: 400;
+}
+
+.texto {
+  font-family: 'Roboto';
+  font-weight: 400;
+}
+
+.acentuacao {
+  font-family: 'Roboto';
+  font-weight: 500;
+}
+
+.titulo {
+  font-size: 68px;
+  color: var(--cinza-principal-textos);
+}
+
+@media (max-width: 767px) {
+  .titulo {
+    font-size: 52px;
+  }
+}

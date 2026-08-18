@@ -1,0 +1,130 @@
+/*
+ * Origem: public_html/css/transparencia/transparencia.css.
+ *
+ * Mudanças deliberadas:
+ *  - `#lista`, `#title` e `#pageInfo` viraram classes;
+ *  - o ::before do botão de download pedia a família "Font Awesome 5 Free"
+ *    contra um build do Font Awesome 6. O nome não casava e o ícone
+ *    simplesmente não aparecia no site atual. Corrigido para a família 6, o
+ *    que faz o ícone de download passar a ser exibido — é uma divergência
+ *    visual intencional, e é o comportamento que o CSS sempre quis.
+ */
+
+:host {
+  display: block;
+}
+
+/* Grid: até 3 colunas, responsivo */
+.lista {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 50px 0 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  gap: 20px;
+}
+
+.titulo-lista {
+  color: var(--cinza-principal-textos);
+}
+
+.estado-lista {
+  color: var(--cinza-secundario-textos);
+  margin: 40px 0;
+}
+
+/* Remove margens padrão nos <li> */
+.lista li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Card básico */
+.card {
+  border-radius: 8px;
+  border-left: 5px solid var(--azul-bebe-escuro);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Título e subtítulo */
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.card-subtitle {
+  font-size: 0.9rem;
+  color: var(--cinza-secundario-textos);
+  margin-bottom: 8px;
+}
+
+/* Texto do card */
+.card-text {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: var(--cinza-secundario-textos);
+}
+
+/* Botão de download */
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: var(--azul-bebe-escuro);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.card-link::before {
+  content: '\f019'; /* unicode download */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  margin-right: 6px;
+}
+
+.card-link:hover {
+  background: var(--verde-limao);
+  color: #fff;
+}
+
+/* Controles de paginação */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.pagination-controls button {
+  padding: 6px 12px;
+  background: none;
+  border: 1px solid var(--azul-bebe-escuro);
+  color: var(--azul-bebe-escuro);
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.pagination-controls button:not(:disabled):hover {
+  background: var(--azul-bebe-escuro);
+  color: #fff;
+}
+
+.page-info {
+  font-size: 1rem;
+  color: #333;
+}

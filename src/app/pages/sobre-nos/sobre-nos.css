@@ -1,0 +1,116 @@
+/*
+ * Origem: public_html/css/sobre-nos/sobre-nos.css mais o bloco <style> inline
+ * que ficava no <head> de sobre-nos.html (linhas 16-50). As cores fora da
+ * paleta da marca — #2e7d32, #1565c0, #e65100, #6a1b9a e o fundo #f8f9fa —
+ * foram mantidas exatamente como estavam.
+ *
+ * Duas observações sobre o que ficou de fora:
+ *
+ * 1. O arquivo legado importava css/exames/secao-cards.css. Nenhuma daquelas
+ *    regras casa com esta página: não há elemento com a classe `card`,
+ *    `card-title`, `list-group` nem ícones fa-check. O import era inócuo.
+ *
+ * 2. O `color: !important` do original alcançava também `body` e `a`, e por
+ *    isso pintava de cinza os links do rodapé — que noutras páginas são claros
+ *    sobre o fundo azul. Aqui a regra está presa ao conteúdo da página, então
+ *    o rodapé fica igual ao das demais páginas. É uma divergência deliberada:
+ *    reproduzir o comportamento antigo significaria texto cinza-escuro sobre
+ *    fundo azul, que era um efeito colateral, não uma decisão de design.
+ */
+
+:host {
+  display: block;
+}
+
+:host .texto,
+:host .fonte-primaria,
+:host h1,
+:host h2,
+:host h3,
+:host h4,
+:host h5,
+:host h6,
+:host p,
+:host li,
+:host label,
+:host span,
+:host div,
+:host a {
+  color: var(--cinza-principal-textos) !important;
+}
+
+.card-sobre-nos {
+  border-radius: 10px;
+}
+
+.mvvp-card {
+  border-left: 4px solid;
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  height: 100%;
+  background-color: #f8f9fa;
+}
+
+.mvvp-card.missao {
+  border-color: #2e7d32;
+}
+.mvvp-card.visao {
+  border-color: #1565c0;
+}
+.mvvp-card.valores {
+  border-color: #e65100;
+}
+.mvvp-card.principios {
+  border-color: #6a1b9a;
+}
+
+.mvvp-card .mvvp-icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+/*
+ * ATENÇÃO — estas quatro cores de ícone e as quatro de <h4> logo abaixo NÃO
+ * aparecem na tela, nem no site atual. O bloco `color: !important` no topo
+ * deste arquivo alcança `div`, `h4` e `span`, e !important vence declaração
+ * normal independentemente de ordem ou especificidade. Resultado: ícones e
+ * títulos dos cards renderizam em cinza, e só a borda esquerda fica colorida.
+ *
+ * As regras foram mantidas sem !important justamente para reproduzir o que se
+ * vê hoje. Para de fato colorir os títulos, basta acrescentar !important aqui
+ * — mas isso é mudança visual e precisa ser uma decisão consciente.
+ */
+.mvvp-card.missao .mvvp-icon {
+  color: #2e7d32;
+}
+.mvvp-card.visao .mvvp-icon {
+  color: #1565c0;
+}
+.mvvp-card.valores .mvvp-icon {
+  color: #e65100;
+}
+.mvvp-card.principios .mvvp-icon {
+  color: #6a1b9a;
+}
+
+.mvvp-card h4 {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.mvvp-card.missao h4 {
+  color: #2e7d32;
+}
+.mvvp-card.visao h4 {
+  color: #1565c0;
+}
+.mvvp-card.valores h4 {
+  color: #e65100;
+}
+.mvvp-card.principios h4 {
+  color: #6a1b9a;
+}
+
+.mvvp-card ul li {
+  margin-bottom: 0.3rem;
+}

@@ -1,0 +1,71 @@
+<section class="section__consultas">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-4 text-center text-sm-center text-xl-start text-lg-start text-md-center"
+      >
+        <h1 class="texto-consultas fonte-primaria">
+          Precisa <br />
+          Marcar <br />
+          Uma <br />
+          Consulta?
+        </h1>
+        <h2 class="texto-consultas2 fonte-primaria">Temos várias especialidades com ótimos</h2>
+        <h2 class="texto-consultas3 fonte-primaria">profissionais.</h2>
+      </div>
+
+      <div
+        class="coluna-card col-12 col-sm-12 col-md-12 col-lg-7 col-xl-8 align-items-xl-center px-4"
+      >
+        <div class="row row-doencas h-auto">
+          @for (consulta of consultas; track consulta.especialidade) {
+            <div class="coluna-card {{ consulta.classesColuna }} text-center px-4 px-sm-2">
+              <div class="card shadow p-3 bg-white rounded w-100">
+                <div class="card-body">
+                  <div
+                    class="row d-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-xl-start"
+                  >
+                    <div
+                      class="col-icone-doenca col-12 col-sm-12 col-md-12 col-xl-6 border border-dark rounded-circle"
+                    >
+                      <i class="icone-doenca {{ consulta.icone }}"></i>
+                    </div>
+                    <div
+                      class="{{
+                        consulta.classesTexto
+                      }} text-center text-sm-center text-md-center text-xl-start flex-grow-1"
+                    >
+                      <h5 class="texto-doenca card-title fonte-primaria">
+                        {{ consulta.especialidade }}
+                      </h5>
+                      <p class="dr-doenca card-text fonte-secundaria">
+                        {{ consulta.profissional || psicologo() }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="row row-botao-consulta">
+        <div class="col">
+          <h2 class="texto-botao-consulta text-center fonte-secundaria">
+            Para mais infomações sobre as consultas e agendandamento online, clique no botão
+            abaixo.
+          </h2>
+
+          <div class="row">
+            <div class="col coluna-botao fonte-primaria">
+              <a routerLink="/consultas" class="botao-consulta btn btn-danger"
+                >Ver todas consultas</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

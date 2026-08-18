@@ -1,0 +1,74 @@
+/*
+ * As abas reaproveitam o visual de `.tab-header`/`.tab-btn` do admin legado,
+ * agora como links de rota em vez de botões com listener de clique. O estado
+ * ativo vem do routerLinkActive.
+ */
+
+:host {
+  display: block;
+}
+
+.tab-header {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #e4e4e4;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-right: 2px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.tab-btn:last-child {
+  margin-right: 0;
+}
+
+.tab-btn.active {
+  background: var(--azul-bebe-escuro);
+  color: #fff;
+}
+
+.admin-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.admin-usuario {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nome-usuario {
+  font-size: 13px;
+  color: var(--cinza-secundario-textos);
+}
+
+.btn-sair {
+  padding: 6px 12px;
+  background: none;
+  border: 1px solid var(--vermelho-rosado-escuro);
+  color: var(--vermelho-rosado-escuro);
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.btn-sair:hover {
+  background: var(--vermelho-rosado-escuro);
+  color: #fff;
+}

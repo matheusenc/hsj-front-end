@@ -1,0 +1,13 @@
+<header>
+  <app-header />
+</header>
+
+@if (chrome().comBanner) {
+  <section class="section__banner">
+    <app-banner [titulo]="chrome().titulo" />
+  </section>
+}
+
+<router-outlet />
+
+<app-footer />

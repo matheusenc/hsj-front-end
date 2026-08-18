@@ -1,0 +1,30 @@
+<section class="section_cards container py-5">
+  <div class="row">
+    @for (exame of exames; track $index) {
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card border-0 text-center shadow my-3 mx-3 mx-sm-1">
+          <div class="div-card-imagem">
+            <img [src]="'/assets/img/' + exame.imagem" class="card-img-top" [alt]="exame.alt" />
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body py-4">
+            <h5 class="card-title fonte-primaria text-wrap">{{ exame.titulo }}</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item py-3">
+              <i class="fa-sharp fa-solid fa-check mx-1"></i>
+              <span class="fonte-secundaria">Atende convênios</span>
+            </li>
+          </ul>
+          <!-- Link ainda sem destino, como no site legado (href="#"). -->
+          <a href="#" role="button" class="my-3">
+            <button class="btn rounded-pill botao-marcar-exame py-2 px-4">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>MARCAR EXAME</span>
+            </button>
+          </a>
+        </div>
+      </div>
+    }
+  </div>
+</section>

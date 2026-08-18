@@ -1,0 +1,11 @@
+/* O visual vem de ../admin-shared.css; aqui só a legenda do campo slug. */
+
+:host {
+  display: block;
+}
+
+.dica {
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--cinza-secundario-textos);
+}

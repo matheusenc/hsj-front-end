@@ -1,0 +1,106 @@
+@if (podeCriar() || podeEditar()) {
+  <h3>{{ editandoId() === null ? 'Novo perfil' : 'Editar perfil' }}</h3>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" formControlName="name" placeholder="Editor" />
+
+    <label for="descricao">Descrição:</label>
+    <input
+      type="text"
+      id="descricao"
+      formControlName="description"
+      placeholder="O que este perfil pode fazer"
+    />
+
+    <fieldset class="papeis">
+      <legend>Permissões</legend>
+      <p class="dica">
+        As permissões são gravadas no token no momento do login: a alteração passa a valer no
+        próximo acesso do usuário.
+      </p>
+
+      @for (papel of papeis(); track papel.id) {
+        <label class="papel-item">
+          <input
+            type="checkbox"
+            [checked]="estaSelecionado(papel.id)"
+            (change)="alternarPapel(papel.id)"
+          />
+          <span>
+            <strong>{{ papel.name }}</strong>
+            <span class="chave">{{ papel.key }}</span>
+            @if (papel.description) {
+              <span class="descricao-papel">{{ papel.description }}</span>
+            }
+          </span>
+        </label>
+      }
+    </fieldset>
+
+    @if (erros().length > 0) {
+      <ul class="mensagem-erro">
+        @for (erro of erros(); track erro) {
+          <li>{{ erro }}</li>
+        }
+      </ul>
+    }
+
+    @if (sucesso()) {
+      <p class="mensagem-sucesso">{{ sucesso() }}</p>
+    }
+
+    <button type="submit" class="btn-salvar" [disabled]="salvando()">
+      {{ salvando() ? 'Salvando…' : 'Salvar' }}
+    </button>
+
+    @if (editandoId() !== null) {
+      <button type="button" class="btn-secundario" (click)="cancelarEdicao()">Cancelar</button>
+    }
+  </form>
+
+  <hr />
+}
+
+<h3>Perfis</h3>
+
+@if (perfis().length === 0) {
+  <p class="estado-vazio">Nenhum perfil cadastrado.</p>
+} @else {
+  <ul>
+    @for (perfil of perfis(); track perfil.id) {
+      <li>
+        <div class="acoes-item">
+          <!-- Perfis de sistema são recusados pelo backend na edição e exclusão. -->
+          @if (podeEditar() && !perfil.isSystem) {
+            <button type="button" class="btn-editar" title="Editar" (click)="editar(perfil)">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+          }
+          @if (podeExcluir() && !perfil.isSystem) {
+            <button type="button" class="btn-excluir" title="Excluir" (click)="excluir(perfil)">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          }
+        </div>
+
+        <p class="doc-titulo">
+          {{ perfil.name }}
+          @if (perfil.isSystem) {
+            <span class="etiqueta-sistema">sistema</span>
+          }
+        </p>
+        <p class="doc-descricao">{{ perfil.description }}</p>
+        <p class="doc-detalhes">
+          {{ perfil.roles.length }} permissõe(s):
+          {{ perfil.roles.length === 0 ? '—' : '' }}
+        </p>
+        <p class="doc-detalhes chaves">
+          @for (papel of perfil.roles; track papel.id) {
+            <span class="chave">{{ papel.key }}</span>
+          }
+        </p>
+      </li>
+    }
+  </ul>
+}

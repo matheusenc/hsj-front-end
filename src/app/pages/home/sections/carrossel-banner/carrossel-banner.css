@@ -1,0 +1,121 @@
+/*
+ * Origem: public_html/css/index/secao-banner.css.
+ *
+ * Os ids `#card-emergencia`, `#card-consultas-e-exames` e `#contato-whatsapp`
+ * viraram classes de mesmo nome. As declarações não mudaram.
+ */
+
+:host {
+  display: block;
+}
+
+.section__banner .carousel {
+  z-index: 0;
+}
+
+.imagem-overlay:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(85, 85, 85, 0.5);
+}
+
+.carrossel__banner .carousel-inner div {
+  height: 47vh;
+}
+
+/* O zoom lento em cada slide é uma marca visual da home. */
+.carrossel__banner .carousel-item img {
+  -webkit-animation: zoom 7s;
+  animation: zoom 7s;
+  object-fit: cover;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(1.3, 1.3);
+  }
+}
+
+/* Puxa os dois cards para cima do carrossel. */
+.emergencia__e__consultas {
+  margin-top: -100px;
+}
+
+.emergencia__e__consultas .card {
+  font-family: 'Roboto';
+}
+
+.emergencia__e__consultas .card a {
+  text-decoration: none;
+  color: var(--cinza-principal-textos);
+}
+
+.emergencia__e__consultas .card .card-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-shadow: 0.5px 0 currentColor;
+  letter-spacing: 0.5px;
+}
+
+.emergencia__e__consultas .card .card-descricao,
+.emergencia__e__consultas .card .card-horario {
+  color: var(--cinza-secundario-textos);
+}
+
+.emergencia__e__consultas .card .card-descricao {
+  font-weight: 400;
+}
+
+.emergencia__e__consultas .card .card-contato {
+  font-family: 'Roboto Slab';
+  font-weight: 600;
+}
+
+.emergencia__e__consultas .card .card-contato .contato-whatsapp {
+  margin-right: 2px;
+}
+
+.emergencia__e__consultas .card-emergencia {
+  background-color: var(--vermelho-rosado-opaco);
+}
+
+.emergencia__e__consultas .card-emergencia .card-title,
+.emergencia__e__consultas .card-emergencia i {
+  color: var(--vermelho-sangue);
+}
+
+.emergencia__e__consultas .card-consultas-e-exames {
+  background-color: var(--azul-bebe-opaco);
+}
+
+.emergencia__e__consultas .card-consultas-e-exames .card-title,
+.emergencia__e__consultas .card-consultas-e-exames i {
+  color: var(--azul-bebe-escuro);
+}
+
+.emergencia__e__consultas .card .card-horario {
+  font-size: 0.9rem;
+  font-weight: 100;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 767px) {
+  .carrossel__banner .carousel-inner div {
+    height: 37vh;
+  }
+}
+
+@media (min-width: 768px) {
+  .emergencia__e__consultas .card {
+    border-radius: 0 !important;
+  }
+}
