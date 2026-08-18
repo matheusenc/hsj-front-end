@@ -4,9 +4,12 @@
 	root * /srv
 	encode gzip zstd
 
-	# As rotas client-side (/transparencia/:slug, /login, /admin/**) não têm
-	# arquivo em disco: caem no index.html e o Angular assume a navegação.
-	try_files {path} {path}/index.html /index.html
+	# As rotas prerenderizadas viram <rota>/index.html no build. As demais
+	# (/transparencia/:slug, /login, /admin/**) não têm arquivo em disco e
+	# caem no index.csr.html — a casca vazia que o Angular gera justamente
+	# para elas. Usar /index.html aqui serviria a home prerenderizada e
+	# quebraria a hidratação em toda rota client-side.
+	try_files {path} {path}/index.html /index.csr.html
 	file_server
 
 	# Arquivos com hash no nome podem ser cacheados para sempre; o HTML não,
