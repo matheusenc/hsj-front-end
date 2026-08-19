@@ -4,6 +4,28 @@
 	root * /srv
 	encode gzip zstd
 
+	# URLs do site legado. Quem chega por link do Google, favorito ou HTML
+	# antigo em cache cairia no try_files abaixo e receberia 200 com a página
+	# "não encontrada" — 404 disfarçado, que o buscador não sabe interpretar.
+	# O 301 aqui resolve antes de o Angular sequer carregar.
+	redir /index.html / permanent
+	redir /consultas.html /consultas permanent
+	redir /exames.html /exames permanent
+	redir /sobre-nos.html /sobre-nos permanent
+	redir /fale-conosco.html /fale-conosco permanent
+	redir /lgpd-politica-privacidade.html /lgpd-politica-privacidade permanent
+	redir /login.html /login permanent
+	redir /admin.html /admin permanent
+
+	# A transparência legada escolhia a categoria por query string
+	# (/transparencia.html?cat=convenio); hoje o slug é segmento de rota.
+	@transparenciaComCategoria {
+		path /transparencia.html
+		query cat=*
+	}
+	redir @transparenciaComCategoria /transparencia/{http.request.uri.query.cat} permanent
+	redir /transparencia.html / permanent
+
 	# As rotas prerenderizadas viram <rota>/index.html no build. As demais
 	# (/transparencia/:slug, /login, /admin/**) não têm arquivo em disco e
 	# caem no index.csr.html — a casca vazia que o Angular gera justamente
