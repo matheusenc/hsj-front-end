@@ -20,7 +20,9 @@
           Nova Era - MG</a
         >
       </div>
-      <div class="col d-none d-xl-block d-lg-block text-center">
+      <!-- d-lg-flex, e não d-lg-block: o utilitário de display do Bootstrap usa
+           !important e desligaria o flex que dá o gap entre os ícones. -->
+      <div class="col d-none d-lg-flex text-center">
         <a
           href="https://www.facebook.com/hospitalsaojosenovaera"
           target="_blank"
@@ -59,63 +61,79 @@
   <button
     class="navbar-toggler"
     type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#navbarNavAltMarkup"
+    (click)="alternarMenu()"
     aria-controls="navbarNavAltMarkup"
-    aria-expanded="false"
+    [attr.aria-expanded]="menuAberto()"
     aria-label="Alternar navegação"
   >
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+  <div
+    class="collapse navbar-collapse justify-content-end"
+    id="navbarNavAltMarkup"
+    [class.show]="menuAberto()"
+  >
     <div class="navbar-nav cabecalho__naveg">
       <a
         class="nav-item nav-link texto-cinza text-center fonte-secundaria"
         routerLink="/consultas"
         routerLinkActive="ativo"
+        (click)="fecharMenu()"
         >Consultas</a
       >
       <a
         class="nav-item nav-link texto-cinza text-center fonte-secundaria"
         routerLink="/exames"
         routerLinkActive="ativo"
+        (click)="fecharMenu()"
         >Exames</a
       >
       <a
         class="nav-item nav-link texto-cinza text-center fonte-secundaria"
         routerLink="/fale-conosco"
         routerLinkActive="ativo"
+        (click)="fecharMenu()"
         >Ouvidoria</a
       >
       <a
         class="nav-item nav-link texto-cinza text-center fonte-secundaria"
         routerLink="/sobre-nos"
         routerLinkActive="ativo"
+        (click)="fecharMenu()"
         >Sobre Nós</a
       >
-      <div class="nav-item dropdown">
-        <a
+      <div
+        class="nav-item dropdown"
+        (mouseenter)="aoEntrarNaTransparencia()"
+        (mouseleave)="aoSairDaTransparencia()"
+      >
+        <button
           class="nav-link dropdown-toggle texto-cinza text-center fonte-secundaria"
-          href="#"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
+          type="button"
+          (click)="alternarTransparencia()"
+          [attr.aria-expanded]="transparenciaAberta()"
         >
           Transparência
-        </a>
-        <ul class="dropdown-menu">
+        </button>
+        <ul class="dropdown-menu" [class.show]="transparenciaAberta()">
           @for (categoria of categories(); track categoria.id) {
             <li>
-              <a class="dropdown-item" [routerLink]="['/transparencia', categoria.slug]">{{
-                categoria.name
-              }}</a>
+              <a
+                class="dropdown-item"
+                [routerLink]="['/transparencia', categoria.slug]"
+                (click)="fecharMenu()"
+                >{{ categoria.name }}</a
+              >
             </li>
           }
           @if (categories().length > 0) {
             <li><hr class="dropdown-divider" /></li>
           }
           <li>
-            <a class="dropdown-item" routerLink="/lgpd-politica-privacidade"
+            <a
+              class="dropdown-item"
+              routerLink="/lgpd-politica-privacidade"
+              (click)="fecharMenu()"
               >LGPD e Política de Privacidade</a
             >
           </li>

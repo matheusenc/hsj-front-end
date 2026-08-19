@@ -22,6 +22,26 @@
   padding: 8px;
 }
 
+/*
+ * Ícone e texto ficavam colados: eram dois elementos inline, sem nada entre
+ * eles. O gap resolve em um lugar só, para as três colunas, em vez de um
+ * utilitário de margem em cada <a> do template — e de quebra alinha o ícone
+ * pelo centro do texto, que o alinhamento por baseline não fazia.
+ */
+.section__topo-pagina .col {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section__topo-pagina .text-center {
+  justify-content: center;
+}
+
+.section__topo-pagina .text-end {
+  justify-content: flex-end;
+}
+
 .cabecalho__naveg {
   border-bottom: 1px solid rgba(255, 255, 255, 0.067);
   margin-top: 0;
@@ -60,9 +80,24 @@
   height: 50px;
 }
 
+/*
+ * O gatilho de Transparência é um <button>: ele não navega, e como <a href="#">
+ * levava o roteador a uma URL inexistente. Aqui ele é despido dos estilos
+ * nativos de botão para ficar idêntico aos demais itens do menu.
+ */
+.navbar-nav .dropdown-toggle {
+  background: none;
+  border: 0;
+  padding: 0.5rem 0;
+  font: inherit;
+  cursor: pointer;
+}
+
 .navbar-nav a:hover,
 .navbar-nav a:active,
-.navbar-nav a.ativo {
+.navbar-nav a.ativo,
+.navbar-nav .dropdown-toggle:hover,
+.navbar-nav .dropdown-toggle[aria-expanded='true'] {
   color: var(--azul-bebe-escuro) !important;
   border-bottom: 1px solid var(--azul-bebe-escuro);
 }
@@ -91,5 +126,31 @@ nav.navbar {
   /* evita que conteúdo interno seja cortado */
   .navbar-nav {
     padding: 12px 16px;
+  }
+
+  /*
+   * Dentro do painel comprimido o submenu não flutua: ele empurra a lista para
+   * baixo, como o próprio Bootstrap faz em navbar colapsada. Flutuando, ele
+   * escapava do painel — que é `position: absolute` — e ficava cortado.
+   */
+  .navbar-nav .dropdown-menu {
+    position: static;
+    float: none;
+    width: 100%;
+    margin-top: 4px;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /*
+   * Os <a> irmãos são filhos diretos do flex e esticam na largura do painel,
+   * então o `text-center` deles centraliza de verdade. O <button> fica dentro
+   * do .nav-item.dropdown e encolhe até o conteúdo, o que jogava Transparência
+   * para a esquerda enquanto os outros ficavam no meio.
+   */
+  .navbar-nav .dropdown-toggle {
+    width: 100%;
+    text-align: center;
   }
 }
