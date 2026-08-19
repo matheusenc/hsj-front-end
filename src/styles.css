@@ -10,9 +10,16 @@
  * Os três @import de fontes do Google que existiam lá foram descartados:
  * Merriweather nunca é usado e as variantes itálicas de Roboto não são
  * aplicadas em lugar nenhum. As fontes reais são os TTF locais abaixo.
+ *
+ * O `@import 'tailwindcss'` que o scaffold do CLI deixou aqui foi removido:
+ * o site é Bootstrap, nenhuma classe do Tailwind é usada, e a convivência
+ * dos dois quebrava o layout. O Tailwind gera um utilitário para cada nome de
+ * classe que ele encontra nos templates, e vários nomes do Bootstrap colidem —
+ * `.collapse` virava `visibility: collapse` e apagava o menu inteiro, enquanto
+ * o preflight punha `display: block` em `img` e empilhava os ícones do topo.
+ * Como o Bootstrap não declara essas propriedades, não havia disputa: o
+ * Tailwind simplesmente vencia.
  */
-
-@import 'tailwindcss';
 
 /* CORES GLOBAIS */
 
