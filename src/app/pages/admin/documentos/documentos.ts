@@ -19,7 +19,7 @@ const PAGE_SIZE = 10;
 
 /**
  * Substitui o admin.js legado, que só criava e excluía documentos apontando
- * para links do Google Drive. Agora o PDF é enviado para a API e a edição de
+ * para links do Google Drive. Agora o arquivo é enviado para a API e a edição de
  * metadados passa a existir (PUT /documents/{id}).
  */
 @Component({

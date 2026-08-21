@@ -24,12 +24,23 @@
     />
 
     <label for="arquivo">
-      Arquivo PDF:
+      Arquivo:
+      <span class="dica">PDF, Word, Excel, PowerPoint, imagem ou ZIP — até 25 MB</span>
       @if (editandoId() !== null) {
         <span class="dica">deixe em branco para manter o arquivo atual</span>
       }
     </label>
-    <input type="file" id="arquivo" accept="application/pdf" (change)="aoEscolherArquivo($event)" />
+    <!--
+      O accept só filtra o diálogo de arquivos do sistema: é conveniência, não
+      validação. Quem barra de verdade é a lista de permissão da API, que ainda
+      confere a assinatura do conteúdo.
+    -->
+    <input
+      type="file"
+      id="arquivo"
+      accept=".pdf,.doc,.docx,.odt,.rtf,.txt,.xls,.xlsx,.ods,.csv,.ppt,.pptx,.odp,.jpg,.jpeg,.png,.gif,.webp,.tif,.tiff,.zip"
+      (change)="aoEscolherArquivo($event)"
+    />
 
     <label for="dataPublicacao">Data de Publicação:</label>
     <input type="date" id="dataPublicacao" formControlName="publicationDate" />
