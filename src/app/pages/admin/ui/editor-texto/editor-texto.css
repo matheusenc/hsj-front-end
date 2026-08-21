@@ -1,0 +1,63 @@
+/*
+ * O tema do Quill vem junto porque a barra de ferramentas é dele. Como o
+ * componente usa ViewEncapsulation.None, isto vira global assim que a tela de
+ * documentos carrega — e não pesa no site público, que nunca carrega o painel.
+ */
+@import 'quill/dist/quill.snow.css';
+
+.editor-texto {
+  margin-bottom: 16px;
+}
+
+/* Alinha a moldura do Quill com a dos demais campos do formulário. */
+.editor-texto .ql-toolbar.ql-snow {
+  border: 1px solid #dfe1ea;
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  background: #fafbfd;
+}
+
+.editor-texto .ql-container.ql-snow {
+  border: 1px solid #dfe1ea;
+  border-radius: 0 0 8px 8px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.editor-texto .ql-editor {
+  min-height: 140px;
+  color: #2b2f36;
+  line-height: 1.55;
+}
+
+.editor-texto .ql-editor.ql-blank::before {
+  color: #a3a8ba;
+  font-style: normal;
+}
+
+.editor-texto .ql-container.ql-snow:focus-within {
+  border-color: #54c5d0;
+  box-shadow: 0 0 0 3px rgba(84, 197, 208, 0.16);
+}
+
+.editor-texto .ql-snow .ql-stroke {
+  stroke: #54595f;
+}
+
+.editor-texto .ql-snow .ql-fill {
+  fill: #54595f;
+}
+
+.editor-texto .ql-snow .ql-active .ql-stroke {
+  stroke: #17727c;
+}
+
+.editor-texto .ql-snow .ql-active .ql-fill {
+  fill: #17727c;
+}
+
+.editor-aviso {
+  margin: 6px 0 0 0;
+  font-size: 12px;
+  color: #a3a8ba;
+}

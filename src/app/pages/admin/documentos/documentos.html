@@ -13,7 +13,7 @@
     <input type="text" id="titulo" formControlName="title" placeholder="Título" />
 
     <label for="descricao">Descrição:</label>
-    <input type="text" id="descricao" formControlName="description" placeholder="Descrição" />
+    <app-editor-texto id="descricao" formControlName="description" />
 
     <label for="linkExterno">Link Externo:</label>
     <input
@@ -128,7 +128,7 @@
         <p class="doc-detalhes">
           {{ documento.fileName }} · {{ formatarTamanho(documento.sizeInBytes) }}
         </p>
-        <p class="doc-descricao">{{ documento.description }}</p>
+        <div class="doc-descricao" [innerHTML]="documento.description"></div>
 
         @if (documento.externalLink) {
           <p class="doc-link-externo">

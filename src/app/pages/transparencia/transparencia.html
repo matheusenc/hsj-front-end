@@ -24,7 +24,12 @@
                   Data do Pagamento: {{ formatarData(documento.paymentDate) }}
                 </h6>
               }
-              <p class="card-text">{{ documento.description }}</p>
+              <!--
+                A descrição é HTML, higienizado pela API antes de ser gravado. O
+                [innerHTML] passa pelo DomSanitizer do Angular, que higieniza de
+                novo — segunda camada. Nunca usar bypassSecurityTrustHtml aqui.
+              -->
+              <div class="card-text descricao-rica" [innerHTML]="documento.description"></div>
               @if (documento.externalLink) {
                 <h6 class="card-subtitle mb-2 text-muted">
                   Link Externo:

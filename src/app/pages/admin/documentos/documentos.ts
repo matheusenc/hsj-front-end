@@ -14,6 +14,7 @@ import {
   ResponseDocumentJson,
 } from '../../../core/models/api.models';
 import { extractErrorMessages } from '../../../core/api/api-error';
+import { EditorTexto } from '../ui/editor-texto/editor-texto';
 
 const PAGE_SIZE = 10;
 
@@ -24,7 +25,7 @@ const PAGE_SIZE = 10;
  */
 @Component({
   selector: 'app-admin-documentos',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, EditorTexto],
   templateUrl: './documentos.html',
   styleUrls: ['../admin-shared.css', './documentos.css'],
 })
