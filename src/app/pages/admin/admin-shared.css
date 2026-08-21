@@ -10,36 +10,50 @@
  * Sobre a cor de ação: é #17727c, e não o #54c5d0 da marca. Texto branco sobre
  * o azul-bebê dá contraste 2,1:1, abaixo do mínimo de 4,5:1 — era o que o
  * `.btn-salvar` fazia. O #54c5d0 continua, como realce e anel de foco.
+ *
+ * Os seletores aqui NÃO se apoiam num ancestral: o encapsulamento do Angular
+ * carimba o atributo do componente em cada elemento do seletor, e não só no
+ * último. Uma regra como `.admin-conteudo .btn-salvar` vira
+ * `.admin-conteudo[_ngcontent-TELA] .btn-salvar[_ngcontent-TELA]` — e como o
+ * `.admin-conteudo` é do admin-layout, ele carrega o atributo DELE e a regra
+ * nunca casa. Era assim que o `.admin-page` do CSS legado também falhava, o
+ * que deixava os botões e os campos com a aparência padrão do navegador.
+ * Como este arquivo só é incluído pelas telas, seletor sem ancestral já fica
+ * restrito a elas pelo próprio encapsulamento.
  */
+
+:host {
+  display: block;
+}
 
 /* ---------- TÍTULOS ---------- */
 
-.admin-conteudo h2,
-.admin-conteudo h3,
-.admin-conteudo h4 {
+h2,
+h3,
+h4 {
   font-family: 'Roboto Slab', serif;
   color: #2b2f36;
   margin: 0 0 14px 0;
 }
 
-.admin-conteudo h2 {
+h2 {
   font-size: 24px;
   font-weight: 600;
 }
 
-.admin-conteudo h3 {
+h3 {
   font-size: 18px;
   font-weight: 600;
 }
 
-.admin-conteudo h4 {
+h4 {
   font-size: 15px;
   font-weight: 600;
 }
 
 /* Espaço entre o formulário e o título da listagem que vem depois. */
-.admin-conteudo form + h3,
-.admin-conteudo form ~ h3 {
+form + h3,
+form ~ h3 {
   margin-top: 32px;
 }
 
@@ -47,7 +61,7 @@
 
 /* Formulário de coluna única não ganha nada esticando: a linha fica longa
    demais para ler e os campos viram faixas. */
-.admin-conteudo form {
+form {
   display: block;
   max-width: 720px;
   padding: 22px 24px;
@@ -57,7 +71,7 @@
   box-shadow: 0 1px 2px rgba(24, 29, 44, 0.04);
 }
 
-.admin-conteudo label {
+label {
   display: block;
   margin-bottom: 6px;
   font-size: 13px;
@@ -65,14 +79,14 @@
   color: #54595f;
 }
 
-.admin-conteudo select,
-.admin-conteudo textarea,
-.admin-conteudo input[type='text'],
-.admin-conteudo input[type='email'],
-.admin-conteudo input[type='password'],
-.admin-conteudo input[type='number'],
-.admin-conteudo input[type='file'],
-.admin-conteudo input[type='date'] {
+select,
+textarea,
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+input[type='file'],
+input[type='date'] {
   width: 100%;
   margin: 0 0 16px 0;
   padding: 10px 12px;
@@ -87,23 +101,23 @@
     box-shadow 0.15s;
 }
 
-.admin-conteudo textarea {
+textarea {
   min-height: 88px;
   line-height: 1.55;
   resize: vertical;
 }
 
-.admin-conteudo select:focus,
-.admin-conteudo textarea:focus,
-.admin-conteudo input:focus {
+select:focus,
+textarea:focus,
+input:focus {
   outline: none;
   border-color: #54c5d0;
   box-shadow: 0 0 0 3px rgba(84, 197, 208, 0.16);
 }
 
-.admin-conteudo select::placeholder,
-.admin-conteudo textarea::placeholder,
-.admin-conteudo input::placeholder {
+select::placeholder,
+textarea::placeholder,
+input::placeholder {
   color: #a3a8ba;
 }
 
@@ -113,7 +127,7 @@
  * intrínseca ele fica contido, e de quebra parece um controle, não uma faixa.
  * A troca por um seletor próprio está prevista para a tela de documentos.
  */
-.admin-conteudo input[type='file'] {
+input[type='file'] {
   width: auto;
   max-width: 100%;
   padding: 9px 12px;
@@ -122,7 +136,7 @@
   cursor: pointer;
 }
 
-.admin-conteudo input[type='checkbox'] {
+input[type='checkbox'] {
   width: 16px;
   height: 16px;
   accent-color: #17727c;
@@ -131,7 +145,7 @@
 
 /* ---------- BOTÕES ---------- */
 
-.admin-conteudo .btn-salvar {
+.btn-salvar {
   height: 40px;
   padding: 0 18px;
   border: 0;
@@ -146,17 +160,17 @@
   transition: background 0.15s;
 }
 
-.admin-conteudo .btn-salvar:hover:not(:disabled) {
+.btn-salvar:hover:not(:disabled) {
   background: #115c65;
 }
 
-.admin-conteudo .btn-salvar:disabled {
+.btn-salvar:disabled {
   opacity: 0.45;
   cursor: default;
   box-shadow: none;
 }
 
-.admin-conteudo .btn-secundario {
+.btn-secundario {
   height: 40px;
   margin-left: 8px;
   padding: 0 18px;
@@ -172,20 +186,20 @@
     border-color 0.15s;
 }
 
-.admin-conteudo .btn-secundario:hover {
+.btn-secundario:hover {
   background: #f4f4fc;
   border-color: #c8cbd8;
 }
 
 /* ---------- LISTAGEM ---------- */
 
-.admin-conteudo ul {
+ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.admin-conteudo li {
+li {
   position: relative;
   margin-bottom: 10px;
   padding: 16px 130px 16px 18px;
@@ -198,12 +212,12 @@
     box-shadow 0.15s;
 }
 
-.admin-conteudo li:hover {
+li:hover {
   border-color: #d3d7e4;
   box-shadow: 0 2px 8px rgba(24, 29, 44, 0.07);
 }
 
-.admin-conteudo .doc-titulo {
+.doc-titulo {
   font-size: 15px;
   font-weight: 500;
   color: #2b2f36;
@@ -211,37 +225,37 @@
   margin-bottom: 4px;
 }
 
-.admin-conteudo .doc-detalhes {
+.doc-detalhes {
   font-size: 12px;
   color: #a3a8ba;
   margin: 3px 0;
 }
 
-.admin-conteudo .doc-descricao {
+.doc-descricao {
   font-size: 14px;
   color: #54595f;
   line-height: 1.55;
   margin: 8px 0 0 0;
 }
 
-.admin-conteudo .doc-link-externo {
+.doc-link-externo {
   font-size: 13px;
   color: #a3a8ba;
   margin: 8px 0 0 0;
 }
 
-.admin-conteudo .doc-link-externo a {
+.doc-link-externo a {
   color: #17727c;
   text-decoration: none;
 }
 
-.admin-conteudo .doc-link-externo a:hover {
+.doc-link-externo a:hover {
   text-decoration: underline;
 }
 
 /* ---------- AÇÕES POR ITEM ---------- */
 
-.admin-conteudo .acoes-item {
+.acoes-item {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -249,8 +263,8 @@
   gap: 4px;
 }
 
-.admin-conteudo .btn-editar,
-.admin-conteudo .btn-excluir {
+.btn-editar,
+.btn-excluir {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -268,17 +282,17 @@
     color 0.15s;
 }
 
-.admin-conteudo .btn-editar:hover {
+.btn-editar:hover {
   background: #e2f2f3;
   color: #17727c;
 }
 
-.admin-conteudo .btn-excluir:hover {
+.btn-excluir:hover {
   background: #f9e8e7;
   color: #b13c5b;
 }
 
-.admin-conteudo a.download-btn {
+a.download-btn {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -297,12 +311,12 @@
     border-color 0.15s;
 }
 
-.admin-conteudo a.download-btn:hover {
+a.download-btn:hover {
   background: #e2f2f3;
   border-color: #b7e0e4;
 }
 
-.admin-conteudo a.download-btn::before {
+a.download-btn::before {
   content: '\f019'; /* unicode do ícone download */
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
@@ -389,11 +403,11 @@
 /* Em telas estreitas as ações saem do canto e vão para baixo do conteúdo,
    senão elas cobrem o título do item. */
 @media (max-width: 575px) {
-  .admin-conteudo li {
+  li {
     padding: 16px 18px;
   }
 
-  .admin-conteudo .acoes-item {
+  .acoes-item {
     position: static;
     margin-top: 12px;
     padding-top: 10px;
